@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/aditya63/web_project/issues"
   },
-  "homepage": "https://github.com/aditya63/web_project#readme"
+  "homepage": "https://github.com/aditya63/web_project#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0"
+  }
 }
