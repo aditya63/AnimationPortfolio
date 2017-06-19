@@ -1,0 +1,23 @@
+{
+  "name": "webproject",
+  "version": "1.0.0",
+  "description": "Building a site using sass, gulp and more",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aditya63/web_project.git"
+  },
+  "keywords": [
+    "website",
+    "sass"
+  ],
+  "author": "Aditya Sharma",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aditya63/web_project/issues"
+  },
+  "homepage": "https://github.com/aditya63/web_project#readme"
+}
