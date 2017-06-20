@@ -3,10 +3,12 @@ let sass = require('gulp-sass');
 let browserSync = require('browser-sync');
 let reload = browserSync.reload;
 let autoprefixer = require('gulp-autoprefixer');
+let clean = require('gulp-clean');
 
 let SOURCEPATHS = {
 	sassSource : 'src/scss/*.scss',
-	htmlSource: 'src/*.html'
+	htmlSource: 'src/*.html',
+	jsSource: 'src/js/*.js'
 }
 let APPPATH = {
 	root: 'app/',
@@ -29,14 +31,33 @@ gulp.task('serve', ['sass'], function(){
 	})
 });
 
-gulp.task('compileHtml', function(){
+//Cleaning any unwanted htnl and js files
+gulp.task('cleanHtml', function(){
+	gulp.src(APPPATH.root + "/*.html", {red: false, force:true})
+		.pipe(clean());
+});
+
+gulp.task('cleanJs', function(){
+	gulp.src(APPPATH.js + "/*.js", {red: false, force:true})
+		.pipe(clean());
+});
+
+//compiling html and js files
+
+gulp.task('compileHtml', ['cleanHtml'], function(){
 	gulp.src(SOURCEPATHS.htmlSource)
 		.pipe(gulp.dest(APPPATH.root))
 });
 
-gulp.task('watch', ['serve', 'sass', 'compileHtml'], function() {
+gulp.task('compileJs', ['cleanJs'], function(){
+	gulp.src(SOURCEPATHS.jsSource)
+		.pipe(gulp.dest(APPPATH.js))
+});
+
+gulp.task('watch', ['serve', 'sass', 'compileHtml', 'cleanHtml', 'compileJs', 'cleanJs'], function() {
 	gulp.watch([SOURCEPATHS.sassSource], ['sass']);
 	gulp.watch([SOURCEPATHS.htmlSource], ['compileHtml']);
+	gulp.watch([SOURCEPATHS.jsSource], ['compileJs']);
 });
 
 gulp.task('default', ['watch']);
