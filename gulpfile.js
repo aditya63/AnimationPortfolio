@@ -20,7 +20,8 @@ let SOURCEPATHS = {
 let APPPATH = {
 	root: 'app/',
 	css:'app/css',
-	js:'app/js'
+	js:'app/js',
+	fonts:'app/fonts'
 }
 
 //Combining sass files and bootstrap CSS in one css file
@@ -37,6 +38,12 @@ sassFiles = gulp.src(SOURCEPATHS.sassSource)
 		   .pipe(gulp.dest(APPPATH.css));
 });
 
+
+//getting bootstrap fonts from node modules
+gulp.task('getFonts', function(){
+	gulp.src('./node_modules/bootstrap/dist/fonts/*.{eot,svg,ttf,woff,woff2}')
+		.pipe(gulp.dest(APPPATH.fonts));
+})
 
 //Gulp running the server
 gulp.task('serve', ['sass'], function(){
@@ -75,7 +82,7 @@ gulp.task('compileJs', ['cleanJs'], function(){
 
 
 //Runs all the tasks defined on gulp
-gulp.task('watch', ['serve', 'sass', 'compileHtml', 'cleanHtml', 'compileJs', 'cleanJs'], function() {
+gulp.task('watch', ['serve', 'sass', 'compileHtml', 'cleanHtml', 'compileJs', 'cleanJs', 'getFonts'], function() {
 	gulp.watch([SOURCEPATHS.sassSource], ['sass']);
 	gulp.watch([SOURCEPATHS.htmlSource], ['compileHtml']);
 	gulp.watch([SOURCEPATHS.jsSource], ['compileJs']);
