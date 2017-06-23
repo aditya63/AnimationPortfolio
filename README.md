@@ -1,7 +1,8 @@
-# SPA using gulp, browersify, NPM, bootstrap and SASS
-----
+## Workflow using gulp, browersify, NPM, bootstrap and SASS
 
-## Pre-requisites
+A customized worflow tmeplate for building efficient websites
+
+### Pre-requisites
 
 In order to run the project, you require to install:
 ```
@@ -9,7 +10,7 @@ In order to run the project, you require to install:
 [git]:     http://git-scm.com/
 [gulp]:    http://gulpjs.com/
 ```
-## Instructions
+### Instructions
 
 * Clone this repo or download it form this website.
 * Now to install depedencies, go to the project folder through terminal/command line
