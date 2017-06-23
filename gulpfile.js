@@ -11,11 +11,17 @@ let concat = require('gulp-concat');
 let merge = require('merge-stream');
 let newer = require('gulp-newer');
 let imagemin = require('gulp-imagemin');
+let injectPartials = require('gulp-inject-partials');
+let minify = require('gulp-minify');
+let rename = require('gulp-rename');
+let cssmin = require('gulp-cssmin');
+let htmlmin = require('gulp-htmlmin')
 
 //sourcepath for files that can be dited
 let SOURCEPATHS = {
 	sassSource : 'src/scss/*.scss',
 	htmlSource: 'src/*.html',
+	htmlPartialSource: 'src/partial/*.html',
 	jsSource: 'src/js/**',
 	imgSource: 'src/img/**'
 }
@@ -79,24 +85,68 @@ gulp.task('cleanJs', function(){
 
 
 //compiling html and js files
-gulp.task('compileHtml', ['cleanHtml'], function(){
-	gulp.src(SOURCEPATHS.htmlSource)
-		.pipe(gulp.dest(APPPATH.root))
+// gulp.task('compileHtml', ['cleanHtml'], function(){
+// 	gulp.src(SOURCEPATHS.htmlSource)
+// 		.pipe(gulp.dest(APPPATH.root))
+// });
+
+gulp.task('html', function(){
+	return gulp.src(SOURCEPATHS.htmlSource)
+		   .pipe(injectPartials())	
+		   .pipe(gulp.dest(APPPATH.root))
 });
 
-gulp.task('compileJs', ['cleanJs'], function(){
+gulp.task('compileJs', function(){
 	gulp.src(SOURCEPATHS.jsSource)
 		.pipe(concat('main.js'))
 		.pipe(browserify())
 		.pipe(gulp.dest(APPPATH.js))
 });
 
+//********* PRODUCTION TASK ONLY ***********//
+
+gulp.task('compressJs', function(){
+	gulp.src(SOURCEPATHS.jsSource)
+		.pipe(concat('main.js'))
+		.pipe(browserify())
+		.pipe(minify())
+		.pipe(gulp.dest(APPPATH.js))
+});
+
+gulp.task('compressCSS', function(){
+	let bootstrapCSS = gulp.src('./node_modules/bootstrap/dist/css/bootstrap.css');
+	let sassFiles;
+
+sassFiles = gulp.src(SOURCEPATHS.sassSource)
+		   .pipe(autoprefixer())
+		   .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+		   return merge(bootstrapCSS, sassFiles)
+		   .pipe(concat('app.css'))
+		   .pipe(cssmin())
+		   .pipe(rename({suffix: '.min'}))
+		   .pipe(gulp.dest(APPPATH.css));
+});
+
+gulp.task('compressHtml', function(){
+	return gulp.src(SOURCEPATHS.htmlSource)
+		   .pipe(injectPartials())
+		   .pipe(htmlmin({collapseWhitespace:true}))	
+		   .pipe(gulp.dest(APPPATH.root))
+});
+//********* PRODUCTION TASK END ***********//
+
 
 //Runs all the tasks defined on gulp
-gulp.task('watch', ['serve', 'sass', 'compileHtml', 'cleanHtml', 'compileJs', 'cleanJs', 'getFonts', 'images'], function() {
+gulp.task('watch', ['serve', 'sass', 'cleanHtml', 'compileJs', 'getFonts', 'images', 'html'], function() {
 	gulp.watch([SOURCEPATHS.sassSource], ['sass']);
-	gulp.watch([SOURCEPATHS.htmlSource], ['compileHtml']);
+	// gulp.watch([SOURCEPATHS.htmlSource], ['compileHtml']);
 	gulp.watch([SOURCEPATHS.jsSource], ['compileJs']);
+	gulp.watch([SOURCEPATHS.htmlSource, SOURCEPATHS.htmlPartialSource], ['html']);
 });
 
 gulp.task('default', ['watch']);
+
+//********* PRODUCTION TASK ONLY ***********//
+// gulp.task('production', ['compressJs', 'compressCSS', 'compressHtml']);
+//********* PRODUCTION TASK END ***********//
+
