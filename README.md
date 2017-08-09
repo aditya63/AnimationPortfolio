@@ -1,6 +1,6 @@
-## Workflow using gulp, browersify, NPM, bootstrap and SASS
+## San Francisco tour SPA
 
-A customized worflow tmeplate for building efficient websites
+A City tour website responsive layout using gulp, browserify and sass
 
 ### Pre-requisites
 
@@ -13,7 +13,7 @@ In order to run the project, you require to install:
 ### Instructions
 
 * Clone this repo or download it form this website.
-* Now to install depedencies, go to the project folder through terminal/command line
+* Now to install dependencies, go to the project folder through terminal/command line
 and enter:
 ```
 npm install
