@@ -1,0 +1,7 @@
+.btn {
+	@include button(transparent, 20px 0px 0px 0px,  $black);
+}
+
+.btn-service {
+	@include button($white, 24px 0px 0px 0px, $black);
+}

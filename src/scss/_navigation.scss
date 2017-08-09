@@ -1,0 +1,70 @@
+.navigation{
+	@include clearfix;
+	padding:10px 29px;
+	background-color: $nav-bg-color;
+
+	h2{
+		tetx-align: left;
+		margin:0;
+
+		&.site-name{
+			display:none;
+			@include tablet{
+				display:inline-block;
+			}
+		}
+		&.nav-title{
+			display:block;
+			text-align: center;
+			@include tablet {
+				display: none;
+			}
+		}
+	}
+	nav{
+		display: inline;
+		margin-top: 10px;
+		font-family: $menu-font-family;
+		font-weight: $menu-font-weight;
+		@include tablet {
+			float:right;
+		}
+		a{
+			color: $menu-anchor-color;
+			font-size: $menu-anchor-font-size;
+			text-decoration: none;
+			text-align:center;
+			display:block;
+			margin-top: 24px;
+
+			&:hover{
+				color:$menu-anchor-hover-color;
+			}
+
+			@include tablet {
+				display:inline;
+				text-align: left;
+			}
+			@include desktop{
+				margin-right:60px;
+				&:last-child{
+					margin-right:0;
+				}
+			}
+		}
+	}
+}
+
+.footer-navigation{
+	@extend .navigation;
+
+	.menu{
+		font-size: 1rem;
+		text-transform: uppercase;
+		@include tablet {
+			float:left;
+			font-size: 1rem;
+			text-transform: uppercase;
+		}
+	}
+}

@@ -1,0 +1,24 @@
+div.services{
+	h1{
+		color:$black;
+		display:table;
+		padding:30px 15px;
+		margin-left:35%;
+		@include tablet{
+			margin-left:45%;
+		}
+	}
+}
+
+.services-list{
+	list-style:none;
+	padding:0;
+
+	li {
+		text-align: center;
+		p {
+			color: $black;
+			font-size: 0.8rem;
+		}
+	}
+}

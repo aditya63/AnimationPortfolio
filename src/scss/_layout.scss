@@ -1,0 +1,27 @@
+*,
+*:after,
+*:before{
+	margin:0;
+	padding:0;
+	@including border-box;
+}
+
+body{
+	background-color: $bg-color;
+	font-size: $para-font-size;
+	color: $text-color;
+	font-family: $heading-font-family;
+
+}
+
+img{
+	width: 100%;
+}
+
+main#main-content{
+	margin-bottom: 20px;	
+}
+
+footer{
+	background-color: $bg-footer;
+}

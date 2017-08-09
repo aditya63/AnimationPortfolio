@@ -1,0 +1,21 @@
+.gallery{
+	h1{
+		color:$black;
+		padding: 30px 0px;
+		margin-left:40%;
+		@include tablet{
+			margin-left:0%;
+		}
+	}
+	@include clearfix;
+	li.image-container {
+		float:left;
+		list-style:none;
+		@include grid-images(4, 0%);
+			img{
+				display:block;
+				max-width:100%;
+				
+			}
+		}
+}

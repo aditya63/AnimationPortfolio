@@ -1,0 +1,86 @@
+$black: 	#000000;
+$yellow: 	#FFBA00;
+$green:		#548c27;
+$red:		#fe2d28;
+$white:		#ffffff;
+$blue:		#0076A3;
+$grey: 		#b1adad;
+$dark-grey: darken($grey, 20);
+$offWhite:  #f5f5f5;
+$dark-blue: darken($blue, 15);
+
+$bg-color: $white;
+$text-color: $black;
+
+$para-font-size: 1rem;
+$para-font-family:  'Open Sans', sans-serif;
+
+//Nav bar
+
+$nav-bg-color: $dark-blue;
+$menu-anchor-font-size: 1rem;
+$menu-anchor-hover-color: $yellow;
+$menu-anchor-color: $white;
+$menu-font-family: 'Open Sans', sans-serif;
+$menu-font-weight:200;
+
+//cards
+$card-bg-color: $offWhite;
+$card-text-font-size: 0.8rem;
+
+//heading
+
+$heading-color: $white;
+$heading-font-family:  'Open Sans', sans-serif;
+$heading-font-weight:400;
+
+$heading-font-size:(
+	h1: 40px,
+	h2: 36px,
+	h3: 32px,
+	h4: 28px,
+	h5: 24px,
+	h6: 20px
+);
+
+//visit
+
+$visit-border-color: $white;
+$visit-heading-color: ligthen($yellow, 10);
+$visit-text-color: $white;
+
+//grid and responsive params
+
+$breakpoints: (
+	mobile: 480px,
+	tablet: 768px,
+	desktop: 1024px
+);
+
+$columns: 12;
+$grid-max-width: 1600px;
+
+//buttons
+
+$btn-font-size:16px;
+$btn-font-weight: bold;
+
+//tables
+
+$table-font-size: 1.2rem;
+$table-caption-font-family: $heading-font-family;
+$table-caption-text-color: $black;
+$table-color: $white;
+$table-hover-bg-color: darken($yellow, 5);
+
+
+//footer
+
+$bg-footer: $dark-blue;
+$footer-color: $white;
+$site-info-bg-color: $yellow;
+$site-info-color: $dark-blue;
+
+body{
+	background-color: $bg-color;
+}

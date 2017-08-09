@@ -1,0 +1,45 @@
+.card{
+	margin-bottom: 30px;
+	@include tablet {
+		width: 27%;
+		float:left;
+		padding: 0 20px;
+	}
+	@include tablet {
+		width: 27%;
+		float:left;
+		padding: 0 40px;
+	}
+	.card-content{
+		background-color:$card-bg-color;
+		padding: 20px;
+		margin-top: -6px;
+		line-height:22px;
+		min-height:200px;
+		h3 {
+			color:$black;
+			margin-bottom: 20px;
+			font-size: map-get($heading-font-size, h4);
+		}
+		p{
+			font-size: $card-text-font-size;
+		}
+	}
+	&:after{
+		@include clearfix;
+	}
+}
+
+.title{
+	color: $black;
+	padding:30px 20px;
+}
+
+#visit{
+
+	@include tablet {
+		display:flex;
+		margin-left:5px;
+	}
+
+}
